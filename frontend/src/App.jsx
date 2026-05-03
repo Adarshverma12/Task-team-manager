@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Layout from './components/Layout';
@@ -9,6 +10,9 @@ import ProjectDetail from './pages/ProjectDetail';
 import Tasks from './pages/Tasks';
 import Users from './pages/Users';
 import LoadingSpinner from './components/LoadingSpinner';
+
+const API = import.meta.env.VITE_API_URL;
+axios.get(`${API}/api/tasks`);
 
 const ProtectedRoute = ({ children, adminOnly = false }) => {
   const { isAuthenticated, isAdmin, loading } = useAuth();
